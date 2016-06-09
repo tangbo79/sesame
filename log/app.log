@@ -1,0 +1,70 @@
+2016-06-09 22:47:38, INFO, _internal.py, line=87, PID=29596,  * Running on http://0.0.0.0:80/ (Press CTRL+C to quit)
+2016-06-09 22:47:38, INFO, _internal.py, line=87, PID=29596,  * Restarting with stat
+2016-06-09 22:47:39, WARNING, _internal.py, line=87, PID=29601,  * Debugger is active!
+2016-06-09 22:47:39, INFO, _internal.py, line=87, PID=29601,  * Debugger pin code: 250-490-888
+2016-06-09 22:47:52, INFO, weixin.py, line=42, PID=29601, process 600001 stock
+2016-06-09 22:47:52, INFO, controller.py, line=21, PID=29601, process, entered..........
+2016-06-09 22:47:52, INFO, history_collector.py, line=24, PID=29601, collect stock(600001) history data, end date: '2016-06-09'.
+2016-06-09 22:47:52, INFO, _internal.py, line=87, PID=29601, 182.254.86.139 - - [09/Jun/2016 22:47:52] "POST /?signature=2a1d978500b831befd02bb9e818d884ca4dc508d&timestamp=1465483672&nonce=821450813&openid=oeknzv7pC3hsqlcIz4xazXdX-_Ec HTTP/1.0" 500 -
+2016-06-09 22:48:04, INFO, weixin.py, line=42, PID=29601, process 002273 stock
+2016-06-09 22:48:04, INFO, controller.py, line=21, PID=29601, process, entered..........
+2016-06-09 22:48:04, INFO, db.py, line=42, PID=29601, find last one record, record info={u'high': 26.7, u'v_ma10': 443209.16, u'ma5': 26.518, u'ma10': 25.24, u'price_change': 0.0, u'v_ma20': 395439.3, u'p_change': 0.0, u'volume': 317514.66, u'ma20': 24.496, u'low': 25.8, u'date': u'2016-06-08', u'close': 26.35, u'_id': ObjectId('575973449d871979f4a9ae77'), u'open': 26.1, u'v_ma5': 407296.79, u'turnover': 5.93}
+2016-06-09 22:48:04, INFO, history_collector.py, line=21, PID=29601, collect stock(002273) history data, begin date: u'2016-06-08'.
+2016-06-09 22:48:04, INFO, history_collector.py, line=24, PID=29601, collect stock(002273) history data, end date: '2016-06-09'.
+2016-06-09 22:48:04, INFO, realtime_collector.py, line=41, PID=29601, collect real time data, stock_id='002273'.
+2016-06-09 22:48:04, INFO, realtime_collector.py, line=49, PID=29601, collect real time data, url='http://140.207.127.33/q=sz002273'
+2016-06-09 22:48:04, INFO, realtime_collector.py, line=29, PID=29601, stock realtime info: {'sell_one': 26.35, 'buy_one': 26.34, 'code': '002273', 'name': u'\u6c34\u6676\u5149\u7535', 'turnover': 5.93}.
+2016-06-09 22:48:04, INFO, db.py, line=42, PID=29601, find last one record, record info={u'high': 26.7, u'v_ma10': 443209.16, u'ma5': 26.518, u'ma10': 25.24, u'price_change': 0.0, u'v_ma20': 395439.3, u'p_change': 0.0, u'volume': 317514.66, u'ma20': 24.496, u'low': 25.8, u'date': u'2016-06-08', u'close': 26.35, u'_id': ObjectId('575973449d871979f4a9ae77'), u'open': 26.1, u'v_ma5': 407296.79, u'turnover': 5.93}
+2016-06-09 22:48:04, INFO, ma_strategy.py, line=38, PID=29601, should buy? buy_price(26.34), ma10_price(25.24), variation(0.04358161648177502)
+2016-06-09 22:48:04, INFO, weixin.py, line=44, PID=29601, -----------------------------------
+2016-06-09 22:48:04, INFO, weixin.py, line=45, PID=29601, process result : you should buy now.
+2016-06-09 22:48:04, INFO, weixin.py, line=46, PID=29601, -----------------------------------
+2016-06-09 22:48:04, INFO, _internal.py, line=87, PID=29601, 182.254.86.139 - - [09/Jun/2016 22:48:04] "POST /?signature=2fc260a82f18791f0755a749d406843b041695e6&timestamp=1465483684&nonce=2080703966&openid=oeknzv7pC3hsqlcIz4xazXdX-_Ec HTTP/1.0" 200 -
+2016-06-09 22:51:11, INFO, _internal.py, line=87, PID=29888,  * Running on http://0.0.0.0:80/ (Press CTRL+C to quit)
+2016-06-09 22:51:11, INFO, _internal.py, line=87, PID=29888,  * Restarting with stat
+2016-06-09 22:51:12, WARNING, _internal.py, line=87, PID=29900,  * Debugger is active!
+2016-06-09 22:51:12, INFO, _internal.py, line=87, PID=29900,  * Debugger pin code: 250-490-888
+2016-06-09 22:51:25, INFO, weixin.py, line=42, PID=29900, process 600001 stock
+2016-06-09 22:51:25, INFO, controller.py, line=21, PID=29900, process, entered..........
+2016-06-09 22:51:25, INFO, history_collector.py, line=24, PID=29900, collect stock(600001) history data, end date: '2016-06-09'.
+2016-06-09 22:51:25, WARNING, history_collector.py, line=33, PID=29900, could get stock('600001') history data from tushare.
+2016-06-09 22:51:25, INFO, realtime_collector.py, line=41, PID=29900, collect real time data, stock_id='600001'.
+2016-06-09 22:51:25, INFO, realtime_collector.py, line=49, PID=29900, collect real time data, url='http://140.207.127.33/q=sh600001'
+2016-06-09 22:51:25, INFO, realtime_collector.py, line=29, PID=29900, stock realtime info: {'sell_one': 0.0, 'buy_one': 0.0, 'code': '600001', 'name': u'\u90af\u90f8\u94a2\u94c1', 'turnover': 0.0}.
+2016-06-09 22:51:25, INFO, weixin.py, line=44, PID=29900, -----------------------------------
+2016-06-09 22:51:25, INFO, weixin.py, line=45, PID=29900, process result : not found history data.
+2016-06-09 22:51:25, INFO, weixin.py, line=46, PID=29900, -----------------------------------
+2016-06-09 22:51:25, INFO, _internal.py, line=87, PID=29900, 182.254.86.144 - - [09/Jun/2016 22:51:25] "POST /?signature=c8932a4728f8a9731f7b373e75cd80062686252a&timestamp=1465483885&nonce=1923736749&openid=oeknzv7pC3hsqlcIz4xazXdX-_Ec HTTP/1.0" 200 -
+2016-06-09 22:52:13, INFO, _internal.py, line=87, PID=29974,  * Running on http://0.0.0.0:80/ (Press CTRL+C to quit)
+2016-06-09 22:52:13, INFO, _internal.py, line=87, PID=29974,  * Restarting with stat
+2016-06-09 22:52:13, WARNING, _internal.py, line=87, PID=29979,  * Debugger is active!
+2016-06-09 22:52:13, INFO, _internal.py, line=87, PID=29979,  * Debugger pin code: 250-490-888
+2016-06-09 22:52:37, INFO, weixin.py, line=42, PID=29979, process 002273 stock
+2016-06-09 22:52:37, INFO, controller.py, line=21, PID=29979, process, entered..........
+2016-06-09 22:52:37, INFO, db.py, line=42, PID=29979, find last one record, record info={u'high': 26.7, u'v_ma10': 443209.16, u'ma5': 26.518, u'ma10': 25.24, u'price_change': 0.0, u'v_ma20': 395439.3, u'p_change': 0.0, u'volume': 317514.66, u'ma20': 24.496, u'low': 25.8, u'date': u'2016-06-08', u'close': 26.35, u'_id': ObjectId('575973449d871979f4a9ae77'), u'open': 26.1, u'v_ma5': 407296.79, u'turnover': 5.93}
+2016-06-09 22:52:37, INFO, history_collector.py, line=21, PID=29979, collect stock(002273) history data, begin date: u'2016-06-08'.
+2016-06-09 22:52:37, INFO, history_collector.py, line=24, PID=29979, collect stock(002273) history data, end date: '2016-06-09'.
+2016-06-09 22:52:38, INFO, _internal.py, line=87, PID=29979, 182.254.86.144 - - [09/Jun/2016 22:52:38] "POST /?signature=33d0f53d057cdee1ae1915831f30e49edbaafe2d&timestamp=1465483957&nonce=1406698897&openid=oeknzv7pC3hsqlcIz4xazXdX-_Ec HTTP/1.0" 500 -
+2016-06-09 22:53:18, INFO, _internal.py, line=87, PID=29979,  * Detected change in '/home/app/collector/history_collector.py', reloading
+2016-06-09 22:53:18, INFO, _internal.py, line=87, PID=29974,  * Restarting with stat
+2016-06-09 22:53:19, WARNING, _internal.py, line=87, PID=30067,  * Debugger is active!
+2016-06-09 22:53:19, INFO, _internal.py, line=87, PID=30067,  * Debugger pin code: 250-490-888
+2016-06-09 22:53:30, INFO, _internal.py, line=87, PID=30078,  * Running on http://0.0.0.0:80/ (Press CTRL+C to quit)
+2016-06-09 22:53:30, INFO, _internal.py, line=87, PID=30078,  * Restarting with stat
+2016-06-09 22:53:30, WARNING, _internal.py, line=87, PID=30083,  * Debugger is active!
+2016-06-09 22:53:30, INFO, _internal.py, line=87, PID=30083,  * Debugger pin code: 250-490-888
+2016-06-09 22:53:41, INFO, weixin.py, line=42, PID=30083, process 002273 stock
+2016-06-09 22:53:41, INFO, controller.py, line=21, PID=30083, process, entered..........
+2016-06-09 22:53:41, INFO, db.py, line=42, PID=30083, find last one record, record info={u'high': 26.7, u'v_ma10': 443209.16, u'ma5': 26.518, u'ma10': 25.24, u'price_change': 0.0, u'v_ma20': 395439.3, u'p_change': 0.0, u'volume': 317514.66, u'ma20': 24.496, u'low': 25.8, u'date': u'2016-06-08', u'close': 26.35, u'_id': ObjectId('575973449d871979f4a9ae77'), u'open': 26.1, u'v_ma5': 407296.79, u'turnover': 5.93}
+2016-06-09 22:53:41, INFO, history_collector.py, line=21, PID=30083, collect stock(002273) history data, begin date: u'2016-06-08'.
+2016-06-09 22:53:41, INFO, history_collector.py, line=24, PID=30083, collect stock(002273) history data, end date: '2016-06-09'.
+2016-06-09 22:53:41, INFO, realtime_collector.py, line=41, PID=30083, collect real time data, stock_id='002273'.
+2016-06-09 22:53:41, INFO, realtime_collector.py, line=49, PID=30083, collect real time data, url='http://140.207.127.33/q=sz002273'
+2016-06-09 22:53:41, INFO, realtime_collector.py, line=29, PID=30083, stock realtime info: {'sell_one': 26.35, 'buy_one': 26.34, 'code': '002273', 'name': u'\u6c34\u6676\u5149\u7535', 'turnover': 5.93}.
+2016-06-09 22:53:41, INFO, db.py, line=42, PID=30083, find last one record, record info={u'high': 26.7, u'v_ma10': 443209.16, u'ma5': 26.518, u'ma10': 25.24, u'price_change': 0.0, u'v_ma20': 395439.3, u'p_change': 0.0, u'volume': 317514.66, u'ma20': 24.496, u'low': 25.8, u'date': u'2016-06-08', u'close': 26.35, u'_id': ObjectId('575973449d871979f4a9ae77'), u'open': 26.1, u'v_ma5': 407296.79, u'turnover': 5.93}
+2016-06-09 22:53:41, INFO, ma_strategy.py, line=38, PID=30083, should buy? buy_price(26.34), ma10_price(25.24), variation(0.04358161648177502)
+2016-06-09 22:53:41, INFO, weixin.py, line=44, PID=30083, -----------------------------------
+2016-06-09 22:53:41, INFO, weixin.py, line=45, PID=30083, process result : you should buy now.
+2016-06-09 22:53:41, INFO, weixin.py, line=46, PID=30083, -----------------------------------
+2016-06-09 22:53:41, INFO, _internal.py, line=87, PID=30083, 182.254.86.139 - - [09/Jun/2016 22:53:41] "POST /?signature=1a85bd5341579023f3f59bc3f78534578b8f59e6&timestamp=1465484021&nonce=573208657&openid=oeknzv7pC3hsqlcIz4xazXdX-_Ec HTTP/1.0" 200 -
+2016-06-09 23:00:12, INFO, _internal.py, line=87, PID=30083, 211.154.152.189 - - [09/Jun/2016 23:00:12] "GET /phpMyAdmin HTTP/1.1" 404 -
