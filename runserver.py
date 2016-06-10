@@ -1,3 +1,11 @@
 from server import app
 from util.logger import logger
-app.run(host='0.0.0.0', port=80, debug=True)
+
+import logging
+_logger = logging.getLogger(__name__)
+
+while True:
+    try:
+        app.run(host='0.0.0.0', port=80, debug=True)
+    except Exception as e:
+        _logger.exception(e)

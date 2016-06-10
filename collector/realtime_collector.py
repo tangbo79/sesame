@@ -59,7 +59,7 @@ class RealtimeCollector(object):
             else:
                 self.__parse_stock_data(result, stock_info)
         except urllib2.URLError, e:  
-            print e
+            _logger.exception(e)
 
     def get_flow_data(self, stock_id, stock_info):  
         try:  
