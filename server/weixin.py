@@ -2,22 +2,22 @@
 import hashlib
 import msg_parser
 import controller
-
-from server import app
-from flask import request, make_response
-
+import json
+import tornado.httpserver
+import tornado.options
+import tornado.web
 import logging
 
 _logger = logging.getLogger(__name__)
 
 def authenticate(request):
-    if len(request.args) <= 3:
+    if len(request.get_arguments()) <= 3:
         return False
-    token = "weixin"
-    signature = request.args["signature"]
-    timestamp = request.args["timestamp"]
-    nonce = request.args["nonce"]
-    echostr = request.args["echostr"]
+    token = 'weixin'
+    signature = request.get_argument('signature', None)
+    timestamp = request.get_argument('timestamp', None)
+    nonce = request.get_argument('nonce', None)
+    echostr = request.get_argument('echostr', None)
 
     combine = "".join([signature, timestamp, nonce, echostr].sort())
     calcualte_signature = hashlib.sha1(combine).hexdigest()
@@ -27,41 +27,48 @@ def authenticate(request):
         return False
 
 def process_user_request(request):
-    xmldict = msg_parser.recv_msg(request.data)
+    xmldict = msg_parser.recv_msg(request.body)
     _logger.info("request = %r" % xmldict)
     _logger.info("process %s stock" % xmldict['Content']) 
     controller.process(xmldict)
     _logger.info("process result : %s" % xmldict['Content']) 
     reply = msg_parser.submit_msg(xmldict)
-    response = make_response(reply)
-    response.content_type = 'application/xml'
-    _logger.info("response = %r" % response)
-    return response
+    _logger.info("response = %r" % reply)
+    return reply 
 
-@app.route('/', methods=['GET', 'POST'])
-def weixin():
-    _logger.info("request method = %r" % request.method)
-    if request.method == 'GET':
+class WeixinHandler(tornado.web.RequestHandler):
+    def get(self):
+        _logger.info("get request")
         try:
-            if authenticate(request) == True:
-                return echostr
+            if authenticate(self) == True:
+                self.write(echostr)
             else:
-                return "认证失败，不是微信服务器的请求！"
+                self.write("认证失败，不是微信服务器的请求！")
         except Exception as e:
             _logger.exception(e)
-            return "you request is illegal"
-    else:  # POST
-        try:
-            response = process_user_request(request)
-        except Exception as e:
-            _logger.exception(e)
-            response = "you request is invalid"
-        _logger.info("POST finished.")
-        return response
+        self.write("you request is illegal")
 
-if __name__ == '__main__':
+    def post(self):
+        _logger.info("put request")
+        try:
+            reply = process_user_request(self.request)
+            self.set_header("Content-Type", "application/xml")
+            self.write(reply)
+        except Exception as e:
+            _logger.exception(e)
+            reply = "you request is invalid"
+        _logger.info("POST finished.")
+        self.write(reply)
+
+from tornado.options import define, options
+define('port', default=80, help='run on the given port', type=int)
+
+def main():
     try:
-        app.run(host='0.0.0.0', port=80, debug=True)
+        app = tornado.web.Application(handlers=[(r'/', WeixinHandler)])
+        http_server = tornado.httpserver.HTTPServer(app)
+        http_server.listen(options.port)
+        tornado.ioloop.IOLoop.instance().start()
     except Exception as e:
         _logger.exception(e)
 
