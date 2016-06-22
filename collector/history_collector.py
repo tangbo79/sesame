@@ -35,7 +35,7 @@ class HistoryCollector(object):
         datas = result.to_dict()
         for attr, data, in datas.iteritems():
             for date, value in data.iteritems():
-                self.__collection.insert_and_update(date, attr, value)
+                self.__collection.insert_and_update('date', date, **{attr: value})
 
 if __name__ == '__main__':
     db = DB(Constants.DB_NAME)

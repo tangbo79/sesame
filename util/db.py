@@ -23,12 +23,13 @@ class Collection(object):
             collection.create_index([('date', ASCENDING)])
         self.__collection = collection
 
-    def insert_and_update(self, key, attr_name, attr_value):
+    def insert_and_update(self, key, value, **kwargs):
         if not self.__collection:
             raise CollectionNotExistException()
-        self.__collection.update_one({'date': key}, 
-                                     {'$set': {attr_name: attr_value}},
-                                     upsert=True)
+        for attr_name, attr_value in kwargs.iteritems():
+            self.__collection.update_one({key: value}, 
+                                        {'$set': {attr_name: attr_value}},
+                                        upsert=True)
 
     def find(self):
         return self.__collection.find()
@@ -85,10 +86,12 @@ if __name__ == "__main__":
     except:
         pass
     collection = Collection("002657", db)
-    collection.insert_and_update("2016-05-30", "open", "17")
-    collection.insert_and_update("2016-05-30", "close", "17")
-    collection.insert_and_update("2016-05-31", "close", "17")
-    collection.insert_and_update("2016-05-31", "open", "17")
+    collection.insert_and_update("date", "2016-05-30", open="17")
+    collection.insert_and_update("date", "2016-05-30", close="17")
+    collection.insert_and_update("date", "2016-05-31", close="17")
+    collection.insert_and_update("date", "2016-05-31", open="17")
+    other = {"other":"NA"}
+    collection.insert_and_update("date", "2016-05-31", **other)
     print collection.find_one("date")
     print db.get_collections()
     db.drop_collection("hello")
