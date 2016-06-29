@@ -1,8 +1,7 @@
-# coding=utf-8
+# -*- coding: utf-8 -*-
 import hashlib
 import msg_parser
 import controller
-import json
 import tornado.httpserver
 import tornado.options
 import tornado.web
@@ -10,17 +9,11 @@ import logging
 
 _logger = logging.getLogger(__name__)
 
-def authenticate(request):
-    if len(request.get_arguments()) <= 3:
-        return False
+def authenticate(signature, timestamp, nonce):
     token = 'weixin'
-    signature = request.get_argument('signature', None)
-    timestamp = request.get_argument('timestamp', None)
-    nonce = request.get_argument('nonce', None)
-    echostr = request.get_argument('echostr', None)
-
-    combine = "".join([signature, timestamp, nonce, echostr].sort())
-    calcualte_signature = hashlib.sha1(combine).hexdigest()
+    args = [token, timestamp, nonce]
+    args.sort()
+    calculate_signature = hashlib.sha1("".join(args)).hexdigest()
     if calculate_signature == signature:
         return True
     else:
@@ -40,13 +33,17 @@ class WeixinHandler(tornado.web.RequestHandler):
     def get(self):
         _logger.info("get request")
         try:
-            if authenticate(self) == True:
+            signature = self.get_argument('signature')
+            timestamp = self.get_argument('timestamp')
+            nonce = self.get_argument('nonce')
+            echostr = self.get_argument('echostr')
+            if authenticate(signature, timestamp, nonce):
                 self.write(echostr)
             else:
                 self.write("认证失败，不是微信服务器的请求！")
         except Exception as e:
             _logger.exception(e)
-        self.write("you request is illegal")
+            self.write("you request is illegal")
 
     def post(self):
         _logger.info("put request")
@@ -63,7 +60,7 @@ class WeixinHandler(tornado.web.RequestHandler):
 from tornado.options import define, options
 define('port', default=80, help='run on the given port', type=int)
 
-def main():
+def server():
     try:
         app = tornado.web.Application(handlers=[(r'/', WeixinHandler)])
         http_server = tornado.httpserver.HTTPServer(app)
